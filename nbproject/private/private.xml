@@ -5,6 +5,16 @@
         <group>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/.git/config</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/View/NewJFrame.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/User.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Farmer.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Admin.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Product.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Inventory.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/LearningContent.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Order.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/OrderItem.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Invoice.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Query.java</file>
         </group>
     </open-files>
 </project-private>
