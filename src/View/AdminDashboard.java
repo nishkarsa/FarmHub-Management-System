@@ -4,6 +4,8 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author ACER
@@ -30,117 +32,126 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         SideBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnManageFarmers = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         ContentArea = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 600));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
         setResizable(false);
 
         SideBar.setBackground(new java.awt.Color(0, 51, 0));
-        SideBar.setPreferredSize(new java.awt.Dimension(220, 600));
+        SideBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 15, 20, 15));
+        SideBar.setPreferredSize(new java.awt.Dimension(240, 720));
+        SideBar.setLayout(new java.awt.GridLayout(10, 0, 1, 10));
 
         jLabel1.setBackground(new java.awt.Color(0, 51, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADMIN");
+        SideBar.add(jLabel1);
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Manage Farmers");
-        jButton1.setPreferredSize(new java.awt.Dimension(220, 40));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnManageFarmers.setBackground(new java.awt.Color(51, 102, 0));
+        btnManageFarmers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnManageFarmers.setForeground(new java.awt.Color(255, 255, 255));
+        btnManageFarmers.setText("Manage Farmers");
+        btnManageFarmers.setBorderPainted(false);
+        btnManageFarmers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageFarmers.setFocusPainted(false);
+        btnManageFarmers.setPreferredSize(new java.awt.Dimension(200, 42));
+        btnManageFarmers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnManageFarmersActionPerformed(evt);
             }
         });
+        SideBar.add(btnManageFarmers);
 
-        jButton2.setBackground(new java.awt.Color(51, 102, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Manage Products");
-        jButton2.setPreferredSize(new java.awt.Dimension(220, 40));
+        jButton5.setBackground(new java.awt.Color(51, 102, 0));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Manage Products");
+        jButton5.setBorderPainted(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setFocusPainted(false);
+        jButton5.setPreferredSize(new java.awt.Dimension(200, 42));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        SideBar.add(jButton5);
 
-        jButton3.setBackground(new java.awt.Color(51, 102, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("View Reports");
-        jButton3.setPreferredSize(new java.awt.Dimension(220, 40));
+        jButton6.setBackground(new java.awt.Color(51, 102, 0));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("View Reports");
+        jButton6.setBorderPainted(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setFocusPainted(false);
+        jButton6.setPreferredSize(new java.awt.Dimension(200, 42));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        SideBar.add(jButton6);
 
-        jButton4.setBackground(new java.awt.Color(51, 102, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Logout");
-        jButton4.setPreferredSize(new java.awt.Dimension(220, 40));
-
-        javax.swing.GroupLayout SideBarLayout = new javax.swing.GroupLayout(SideBar);
-        SideBar.setLayout(SideBarLayout);
-        SideBarLayout.setHorizontalGroup(
-            SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SideBarLayout.createSequentialGroup()
-                .addGroup(SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(SideBarLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        SideBarLayout.setVerticalGroup(
-            SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
-        );
+        jButton7.setBackground(new java.awt.Color(51, 102, 0));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Logout");
+        jButton7.setBorderPainted(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setFocusPainted(false);
+        jButton7.setPreferredSize(new java.awt.Dimension(200, 42));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        SideBar.add(jButton7);
 
         getContentPane().add(SideBar, java.awt.BorderLayout.LINE_START);
 
         ContentArea.setBackground(new java.awt.Color(255, 255, 204));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Welcome Admin");
-
-        javax.swing.GroupLayout ContentAreaLayout = new javax.swing.GroupLayout(ContentArea);
-        ContentArea.setLayout(ContentAreaLayout);
-        ContentAreaLayout.setHorizontalGroup(
-            ContentAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContentAreaLayout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(554, Short.MAX_VALUE))
-        );
-        ContentAreaLayout.setVerticalGroup(
-            ContentAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContentAreaLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel2)
-                .addContainerGap(531, Short.MAX_VALUE))
-        );
-
+        ContentArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(25, 25, 25, 25));
+        ContentArea.setLayout(new java.awt.BorderLayout());
         getContentPane().add(ContentArea, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnManageFarmersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFarmersActionPerformed
+    // Remove old content
+    ContentArea.removeAll();
+
+    // Create instance of ManageFarmerPanel
+    ManageFarmerPanel manageFarmers = new ManageFarmerPanel();
+
+    // Add to content panel
+    ContentArea.add(manageFarmers, BorderLayout.CENTER);
+
+    // Refresh panel
+    ContentArea.revalidate();
+    ContentArea.repaint();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnManageFarmersActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,11 +181,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContentArea;
     private javax.swing.JPanel SideBar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnManageFarmers;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
