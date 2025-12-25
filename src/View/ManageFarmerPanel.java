@@ -49,6 +49,7 @@ public class ManageFarmerPanel extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Delete Farmer");
         jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setPreferredSize(new java.awt.Dimension(150, 36));
         jPanel1.add(jButton1);
@@ -58,6 +59,7 @@ public class ManageFarmerPanel extends javax.swing.JPanel {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Mark Inactive");
         jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setPreferredSize(new java.awt.Dimension(150, 36));
         jPanel1.add(jButton2);

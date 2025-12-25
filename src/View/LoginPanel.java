@@ -56,6 +56,11 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2.setText("Username");
 
         loginUsername.setPreferredSize(new java.awt.Dimension(64, 35));
+        loginUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginUsernameActionPerformed(evt);
+            }
+        });
         loginUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 loginUsernameKeyTyped(evt);
@@ -219,6 +224,10 @@ public class LoginPanel extends javax.swing.JPanel {
     private void loginPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginPasswordKeyTyped
     loginMessage.setText("");    // TODO add your handling code here:
     }//GEN-LAST:event_loginPasswordKeyTyped
+
+    private void loginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameActionPerformed
+    // TODO add your handling code here:
+    }//GEN-LAST:event_loginUsernameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
