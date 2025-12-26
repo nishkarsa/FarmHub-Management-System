@@ -12,12 +12,9 @@ import javax.swing.*;
  */
 public class ValidationController 
 {
-    public static boolean isEmpty(JTextField field, String name) {
-        if (field.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    name + " cannot be empty",
-                    "Validation Error",
-                    JOptionPane.ERROR_MESSAGE);
+public static boolean isEmpty(JTextField field, String name) {
+        if (field.getText().trim().isEmpty() || field.getText().equals(name)) {
+            JOptionPane.showMessageDialog(null, name + " cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
             field.requestFocus();
             return true;
         }
@@ -26,13 +23,22 @@ public class ValidationController
 
     public static boolean isEmptyPassword(JPasswordField field) {
         if (String.valueOf(field.getPassword()).trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "Password cannot be empty",
-                    "Validation Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Password cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
             field.requestFocus();
             return true;
         }
         return false;
+    }
+
+    // New: Validate if the string is a valid number (Integer or Double)
+    public static boolean isNumeric(JTextField field, String name) {
+        try {
+            Double.parseDouble(field.getText().trim());
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, name + " must be a valid number", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            field.requestFocus();
+            return false;
+        }
     }
 }

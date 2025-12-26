@@ -17,6 +17,10 @@ public abstract class User
     protected String phone;
     protected String role;
     
+    public User()
+    {
+        
+    }
     // Getter Methods
     public int getUserId()
     {
