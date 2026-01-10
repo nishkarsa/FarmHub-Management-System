@@ -7,6 +7,7 @@ package View;
 import Controller.*;
 import java.awt.*;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -19,6 +20,13 @@ public class Main extends javax.swing.JFrame {
 
     private AuthController auth;
     private NavigationController nav;
+    
+    CartController cartController;
+    
+    SelectionSort sortController;
+    
+    FarmingContentController controller;
+
     /**
      * Creates new form Main
      */
@@ -27,7 +35,10 @@ public class Main extends javax.swing.JFrame {
         
         nav = new NavigationController(mainCardPanel);
         auth = new AuthController(nav);
-        
+       cartController = new CartController(cartTable);
+       sortController = new SelectionSort(productPanel);
+       controller = new FarmingContentController(contentPanel);
+
     
     // Show login first
     nav.show("card6");
@@ -81,26 +92,113 @@ public class Main extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         ProductName = new javax.swing.JTextField();
         comboCategory = new javax.swing.JComboBox<>();
-        Brand = new javax.swing.JTextField();
         Price = new javax.swing.JTextField();
-        Quantity = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Description = new javax.swing.JTextArea();
         buttonSave = new javax.swing.JButton();
         buttonClear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         FarmerPanel = new javax.swing.JPanel();
         FarmerSideBar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         FarmerContentArea = new javax.swing.JPanel();
+        farmingTechniques = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        txtSearchTechnique = new javax.swing.JTextField();
+        contentButtonSearch = new javax.swing.JButton();
+        cmbTerrain = new javax.swing.JComboBox<>();
+        cmbSeason = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        contentPanel = new javax.swing.JPanel();
+        terrace = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        drip = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        paddy = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
+        greenhouse = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
+        rotation = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextPane5 = new javax.swing.JTextPane();
+        mulching = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextPane6 = new javax.swing.JTextPane();
+        agroforestry = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextPane7 = new javax.swing.JTextPane();
+        buyToolsAndPesticides = new javax.swing.JPanel();
+        SelectionSortPanel = new javax.swing.JPanel();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        jButton20 = new javax.swing.JButton();
+        cmbCategory = new javax.swing.JComboBox<>();
+        productPanel = new javax.swing.JPanel();
+        productCard1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        productCard2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
+        productCard3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        productCard4 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
+        productCard5 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jButton16 = new javax.swing.JButton();
+        productCard6 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
+        cartPanel = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        cartTable = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jButton24 = new javax.swing.JButton();
+        subTotal = new javax.swing.JLabel();
+        VAT = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 720));
         setResizable(false);
 
         mainCardPanel.setBackground(new java.awt.Color(245, 247, 250));
@@ -290,7 +388,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)))
                 .addComponent(LoginImg1, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(1309, Short.MAX_VALUE))
         );
         RegisterPanelLayout.setVerticalGroup(
             RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +414,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(1360, Short.MAX_VALUE))
         );
 
         authCardPanel.add(RegisterPanel, "card3");
@@ -372,7 +470,7 @@ public class Main extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(51, 102, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("View Reports");
+        jButton6.setText("Delete History");
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusPainted(false);
@@ -414,17 +512,14 @@ public class Main extends javax.swing.JFrame {
 
         ProductName.setText("Product Name");
         ProductName.setPreferredSize(new java.awt.Dimension(210, 40));
+        ProductName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProductNameKeyPressed(evt);
+            }
+        });
 
         comboCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tool", "Pesticide" }));
         comboCategory.setPreferredSize(new java.awt.Dimension(210, 40));
-
-        Brand.setText("Brand");
-        Brand.setPreferredSize(new java.awt.Dimension(210, 40));
-        Brand.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BrandActionPerformed(evt);
-            }
-        });
 
         Price.setText("Price");
         Price.setPreferredSize(new java.awt.Dimension(210, 40));
@@ -433,13 +528,11 @@ public class Main extends javax.swing.JFrame {
                 PriceActionPerformed(evt);
             }
         });
-
-        Quantity.setText("Quantity");
-
-        Description.setColumns(20);
-        Description.setRows(5);
-        Description.setText("Description");
-        jScrollPane1.setViewportView(Description);
+        Price.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PriceKeyPressed(evt);
+            }
+        });
 
         buttonSave.setBackground(new java.awt.Color(51, 153, 0));
         buttonSave.setText("Save");
@@ -457,12 +550,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        jTable1.setBackground(new java.awt.Color(153, 204, 255));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Product Name", "Tool", "Brand", "Price", "Quantity", "Description"
@@ -476,7 +571,15 @@ public class Main extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setDragEnabled(true);
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setFocusable(false);
+        jTable1.setRowHeight(30);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTable1);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.getTableHeader().setResizingAllowed(true);
 
         jButton4.setBackground(new java.awt.Color(204, 0, 0));
         jButton4.setText("Delete Product");
@@ -486,38 +589,41 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Choose Image");
+
         javax.swing.GroupLayout ManageOrderLayout = new javax.swing.GroupLayout(ManageOrder);
         ManageOrder.setLayout(ManageOrderLayout);
         ManageOrderLayout.setHorizontalGroup(
             ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageOrderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ManageOrderLayout.createSequentialGroup()
-                        .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Price, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                .addComponent(Brand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboCategory, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ProductName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(buttonClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                .addComponent(Quantity, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageOrderLayout.createSequentialGroup()
+                        .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(comboCategory, javax.swing.GroupLayout.Alignment.LEADING, 0, 230, Short.MAX_VALUE)
+                                            .addComponent(ProductName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Price, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)))
+                                .addComponent(buttonSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(1297, Short.MAX_VALUE))
         );
         ManageOrderLayout.setVerticalGroup(
             ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageOrderLayout.createSequentialGroup()
-                .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ManageOrderLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ManageOrderLayout.createSequentialGroup()
                         .addComponent(Title)
                         .addGap(36, 36, 36)
@@ -525,20 +631,16 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Brand, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton9)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
                         .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addGap(0, 1241, Short.MAX_VALUE))
         );
 
         ContentArea.add(ManageOrder, "card2");
@@ -591,21 +693,6 @@ public class Main extends javax.swing.JFrame {
         });
         FarmerSideBar.add(jButton8);
 
-        jButton9.setBackground(new java.awt.Color(51, 102, 0));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("My Orders");
-        jButton9.setBorderPainted(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setFocusPainted(false);
-        jButton9.setPreferredSize(new java.awt.Dimension(200, 42));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        FarmerSideBar.add(jButton9);
-
         jButton10.setBackground(new java.awt.Color(51, 102, 0));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -624,17 +711,554 @@ public class Main extends javax.swing.JFrame {
         FarmerPanel.add(FarmerSideBar, java.awt.BorderLayout.LINE_START);
 
         FarmerContentArea.setBackground(new java.awt.Color(255, 255, 204));
+        FarmerContentArea.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout FarmerContentAreaLayout = new javax.swing.GroupLayout(FarmerContentArea);
-        FarmerContentArea.setLayout(FarmerContentAreaLayout);
-        FarmerContentAreaLayout.setHorizontalGroup(
-            FarmerContentAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+        farmingTechniques.setBackground(new java.awt.Color(51, 0, 0));
+        farmingTechniques.setLayout(new java.awt.BorderLayout());
+
+        jPanel8.setBackground(new java.awt.Color(102, 102, 0));
+
+        txtSearchTechnique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchTechniqueActionPerformed(evt);
+            }
+        });
+
+        contentButtonSearch.setText("Search");
+        contentButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contentButtonSearchActionPerformed(evt);
+            }
+        });
+
+        cmbTerrain.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Hilly", "Plain", "Dry" }));
+        cmbTerrain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTerrainActionPerformed(evt);
+            }
+        });
+
+        cmbSeason.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Summer", "Rainy", "Winter" }));
+        cmbSeason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSeasonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(txtSearchTechnique, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentButtonSearch)
+                .addGap(18, 18, 18)
+                .addComponent(cmbTerrain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1792, Short.MAX_VALUE))
         );
-        FarmerContentAreaLayout.setVerticalGroup(
-            FarmerContentAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchTechnique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contentButtonSearch)
+                    .addComponent(cmbTerrain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
+
+        farmingTechniques.add(jPanel8, java.awt.BorderLayout.PAGE_START);
+
+        contentPanel.setBackground(new java.awt.Color(102, 153, 0));
+        contentPanel.setLayout(new java.awt.GridLayout(10, 0, 2, 10));
+
+        terrace.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        terrace.setName("hilly_rainy_terrace_farming"); // NOI18N
+        terrace.setPreferredSize(new java.awt.Dimension(350, 150));
+        terrace.setLayout(new java.awt.BorderLayout());
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("Terrace Farming");
+        terrace.add(jLabel19, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane1.setText("Terrain: Hilly\tSeason: Rainy\n\nUsed on hilly or mountainous terrain to prevent soil erosion and water runoff.\nHow to perform: * Cut and Fill: Dig into the slope to create flat \"steps.\"\nBund Construction: Build low walls (bunds) using stones or soil at the edge of each step to hold water and soil.\nDrainage: Create channels to allow excess water to flow safely from one level to the next.");
+        jScrollPane5.setViewportView(jTextPane1);
+
+        terrace.add(jScrollPane5, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(terrace);
+
+        drip.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        drip.setName("dry_summer_drip_irrigation"); // NOI18N
+        drip.setPreferredSize(new java.awt.Dimension(350, 150));
+        drip.setLayout(new java.awt.BorderLayout());
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setText("Drip Irrigation");
+        drip.add(jLabel20, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane2.setText("Terrain: Dry\tSeason: Summer\n\nA precise watering method that delivers water directly to the plant's root zone.\nHow to perform:\nSetup: Lay out a network of main pipes and thinner \"lateral\" tubes along crop rows.\nInstallation: Use a punch tool to insert emitters (drippers) into the tubes near each plant.\nOperation: Connect to a water source (like a tank or pump) and use a filter to prevent clogging.");
+        jScrollPane6.setViewportView(jTextPane2);
+
+        drip.add(jScrollPane6, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(drip);
+
+        paddy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        paddy.setName("plain_rainy_paddy_cultivation"); // NOI18N
+        paddy.setPreferredSize(new java.awt.Dimension(350, 150));
+        paddy.setLayout(new java.awt.BorderLayout());
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Paddy Cultivation");
+        paddy.add(jLabel21, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane3.setText("Terrain: Plain\tSeason: Rainy\n\nThe traditional method of growing rice in flooded fields.\nHow to perform:\nPuddling: Churn the soil with water to create a soft, muddy layer that holds water.\nTransplanting: Grow seedlings in a separate nursery for 20-30 days, then manually replant them into the flooded main field.\nWater Management: Keep a consistent water level (about 5-10 cm) until the crop starts to mature.");
+        jScrollPane7.setViewportView(jTextPane3);
+
+        paddy.add(jScrollPane7, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(paddy);
+
+        greenhouse.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        greenhouse.setName("any_winter_greenhouse_farming"); // NOI18N
+        greenhouse.setPreferredSize(new java.awt.Dimension(350, 150));
+        greenhouse.setLayout(new java.awt.BorderLayout());
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel28.setText("Greenhouse Farming");
+        greenhouse.add(jLabel28, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane4.setText("Terrain: Any\tSeason: Winter\n\nGrowing crops inside a structure to control the environment.\nHow to perform:\nStructure: Build a frame (wood or metal) and cover it with UV-stabilized plastic or glass.\nClimate Control: Use vents or fans for cooling and heaters or thermal blankets for warmth.\nProtected Planting: Grow high-value crops (like tomatoes or bell peppers) in soil beds or hydroponic trays to protect them from pests and harsh weather.");
+        jScrollPane8.setViewportView(jTextPane4);
+
+        greenhouse.add(jScrollPane8, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(greenhouse);
+
+        rotation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        rotation.setName("plain_all_crop_rotation"); // NOI18N
+        rotation.setPreferredSize(new java.awt.Dimension(350, 150));
+        rotation.setLayout(new java.awt.BorderLayout());
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel29.setText("Crop Rotation");
+        rotation.add(jLabel29, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane5.setText("Terrain: Plain\tSeason: All\n\nAlternating different types of crops in the same field each season.\nHow to perform:\nPlan: Divide your field into sections.\nSequence: Follow a heavy feeder (like corn) with a nitrogen-fixer (like beans/legumes) to naturally restore soil nutrients.\nCycle: Repeat the cycle over 3–4 years to break pest and disease cycles.");
+        jScrollPane9.setViewportView(jTextPane5);
+
+        rotation.add(jScrollPane9, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(rotation);
+
+        mulching.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mulching.setName("dry_summer_mulching"); // NOI18N
+        mulching.setPreferredSize(new java.awt.Dimension(350, 150));
+        mulching.setLayout(new java.awt.BorderLayout());
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel30.setText("Mulching");
+        mulching.add(jLabel30, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane6.setText("Terrain: Dry\tSeason: Summer\n\nCovering the soil surface around plants with organic or synthetic materials.\nHow to perform:\nSelection: Use straw, dried leaves, or plastic sheets.\nApplication: Spread a layer of organic material (5-10 cm thick) around the base of plants, leaving a small gap around the stem.\nBenefit: This suppresses weeds and keeps the soil moist.");
+        jScrollPane10.setViewportView(jTextPane6);
+
+        mulching.add(jScrollPane10, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(mulching);
+
+        agroforestry.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        agroforestry.setName("hilly_all_agroforestry"); // NOI18N
+        agroforestry.setPreferredSize(new java.awt.Dimension(350, 150));
+        agroforestry.setLayout(new java.awt.BorderLayout());
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel31.setText("Agroforestry");
+        agroforestry.add(jLabel31, java.awt.BorderLayout.PAGE_START);
+
+        jTextPane7.setText("Terrain: Hilly\tSeason: All\n\nIntegrating trees and shrubs into crop and livestock farming.\nHow to perform:\nAlley Cropping: Plant rows of trees with wide spaces in between for growing field crops.\nBoundary Planting: Plant trees along the edges of the farm to act as windbreaks.\nMaintenance: Regularly prune the trees to ensure the crops underneath get enough sunlight.");
+        jScrollPane11.setViewportView(jTextPane7);
+
+        agroforestry.add(jScrollPane11, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(agroforestry);
+
+        jScrollPane4.setViewportView(contentPanel);
+
+        farmingTechniques.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        FarmerContentArea.add(farmingTechniques, "card3");
+
+        buyToolsAndPesticides.setBackground(new java.awt.Color(51, 0, 0));
+        buyToolsAndPesticides.setLayout(new java.awt.BorderLayout());
+
+        SelectionSortPanel.setBackground(new java.awt.Color(102, 102, 0));
+
+        jButton18.setText("Sort by Name");
+        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        jButton19.setText("Sort by Price");
+        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.setText("Search");
+        jButton20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
+        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Tool", "Pesticide" }));
+        cmbCategory.setAutoscrolls(true);
+        cmbCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoryActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SelectionSortPanelLayout = new javax.swing.GroupLayout(SelectionSortPanel);
+        SelectionSortPanel.setLayout(SelectionSortPanelLayout);
+        SelectionSortPanelLayout.setHorizontalGroup(
+            SelectionSortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SelectionSortPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton20)
+                .addGap(155, 155, 155)
+                .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton19)
+                .addContainerGap(1561, Short.MAX_VALUE))
+        );
+        SelectionSortPanelLayout.setVerticalGroup(
+            SelectionSortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SelectionSortPanelLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(SelectionSortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton20)
+                    .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton19)
+                    .addComponent(jButton18))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        buyToolsAndPesticides.add(SelectionSortPanel, java.awt.BorderLayout.PAGE_START);
+
+        productPanel.setBackground(new java.awt.Color(102, 153, 0));
+        productPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        productPanel.setPreferredSize(new java.awt.Dimension(700, 720));
+        productPanel.setLayout(new java.awt.GridLayout(0, 3, 10, 10));
+
+        productCard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard1.setName("tool_rake"); // NOI18N
+        productCard1.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard1.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\DataStructureAndSpecialistProgramming\\CourseWork\\FarmHubManagementSystem\\img\\rake.jpg")); // NOI18N
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel6.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard1.add(jLabel6, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel7.setText("Rake");
+        jPanel1.add(jLabel7);
+
+        jLabel8.setText("1500");
+        jLabel8.setName("lblPrice"); // NOI18N
+        jPanel1.add(jLabel8);
+
+        jButton11.setBackground(new java.awt.Color(0, 204, 0));
+        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Add to Cart");
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11);
+
+        productCard1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard1);
+        productCard1.getAccessibleContext().setAccessibleName("");
+        productCard1.getAccessibleContext().setAccessibleDescription("");
+
+        productCard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard2.setName("tool_crocodile"); // NOI18N
+        productCard2.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard2.setLayout(new java.awt.BorderLayout());
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/crocodile_steel_hoe_head.jpg"))); // NOI18N
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel9.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard2.add(jLabel9, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel10.setText("Crocodile Steel Hoe Head");
+        jPanel2.add(jLabel10);
+
+        jLabel11.setText("3500");
+        jLabel11.setName("lblPrice"); // NOI18N
+        jPanel2.add(jLabel11);
+
+        jButton12.setBackground(new java.awt.Color(0, 204, 0));
+        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setText("Add to Cart");
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton12);
+
+        productCard2.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard2);
+
+        productCard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard3.setName("tool_watering_can"); // NOI18N
+        productCard3.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard3.setLayout(new java.awt.BorderLayout());
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/watering_can.jpg"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel12.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard3.add(jLabel12, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel13.setText("Watering Can");
+        jPanel3.add(jLabel13);
+
+        jLabel14.setText("750");
+        jLabel14.setName("lblPrice"); // NOI18N
+        jPanel3.add(jLabel14);
+
+        jButton13.setBackground(new java.awt.Color(0, 204, 0));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("Add to Cart");
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton13);
+
+        productCard3.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard3);
+
+        productCard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard4.setName("tool_wheel"); // NOI18N
+        productCard4.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard4.setLayout(new java.awt.BorderLayout());
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/wheelbarrow.jpg"))); // NOI18N
+        jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel15.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard4.add(jLabel15, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel16.setText("Wheel Barrow");
+        jPanel4.add(jLabel16);
+
+        jLabel17.setText("4500");
+        jLabel17.setName("lblPrice"); // NOI18N
+        jPanel4.add(jLabel17);
+
+        jButton14.setBackground(new java.awt.Color(0, 204, 0));
+        jButton14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setText("Add to Cart");
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton14);
+
+        productCard4.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard4);
+
+        productCard5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard5.setName("pesticide_bayer"); // NOI18N
+        productCard5.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard5.setLayout(new java.awt.BorderLayout());
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bayer_roundup.jpg"))); // NOI18N
+        jLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel22.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard5.add(jLabel22, java.awt.BorderLayout.CENTER);
+
+        jPanel6.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel23.setText("Bayer Roundup Herbicide");
+        jPanel6.add(jLabel23);
+
+        jLabel24.setText("250");
+        jLabel24.setName("lblPrice"); // NOI18N
+        jPanel6.add(jLabel24);
+
+        jButton16.setBackground(new java.awt.Color(0, 204, 0));
+        jButton16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton16.setText("Add to Cart");
+        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton16);
+
+        productCard5.add(jPanel6, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard5);
+
+        productCard6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productCard6.setName("pesticide_upl"); // NOI18N
+        productCard6.setPreferredSize(new java.awt.Dimension(200, 250));
+        productCard6.setLayout(new java.awt.BorderLayout());
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/upl_saaf.jpg"))); // NOI18N
+        jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel25.setPreferredSize(new java.awt.Dimension(150, 120));
+        productCard6.add(jLabel25, java.awt.BorderLayout.CENTER);
+
+        jPanel7.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel26.setText("UPL Saaf Fungicide");
+        jPanel7.add(jLabel26);
+
+        jLabel27.setText("150");
+        jLabel27.setName("lblName"); // NOI18N
+        jPanel7.add(jLabel27);
+
+        jButton17.setBackground(new java.awt.Color(0, 204, 0));
+        jButton17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton17.setForeground(new java.awt.Color(255, 255, 255));
+        jButton17.setText("Add to Cart");
+        jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton17);
+
+        productCard6.add(jPanel7, java.awt.BorderLayout.PAGE_END);
+
+        productPanel.add(productCard6);
+
+        buyToolsAndPesticides.add(productPanel, java.awt.BorderLayout.WEST);
+
+        cartPanel.setBackground(new java.awt.Color(102, 153, 0));
+        cartPanel.setPreferredSize(new java.awt.Dimension(260, 720));
+        cartPanel.setLayout(new java.awt.BorderLayout());
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Shopping Cart");
+        cartPanel.add(jLabel18, java.awt.BorderLayout.PAGE_START);
+
+        cartTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Price", "Quantity", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Long.class, java.lang.Integer.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(cartTable);
+
+        cartPanel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel5.setLayout(new java.awt.GridLayout(5, 1));
+
+        jButton24.setBackground(new java.awt.Color(204, 0, 51));
+        jButton24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton24.setForeground(new java.awt.Color(255, 255, 255));
+        jButton24.setText("Remove Last item");
+        jButton24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton24);
+
+        subTotal.setText("Sub-total:");
+        jPanel5.add(subTotal);
+
+        VAT.setText("VAT (13%):");
+        jPanel5.add(VAT);
+
+        total.setText("Total: ");
+        jPanel5.add(total);
+
+        jButton15.setBackground(new java.awt.Color(102, 153, 255));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton15.setForeground(new java.awt.Color(255, 255, 255));
+        jButton15.setText("Checkout");
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton15);
+
+        cartPanel.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+
+        buyToolsAndPesticides.add(cartPanel, java.awt.BorderLayout.CENTER);
+
+        FarmerContentArea.add(buyToolsAndPesticides, "card2");
 
         FarmerPanel.add(FarmerContentArea, java.awt.BorderLayout.CENTER);
 
@@ -645,7 +1269,6 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
     
     private void RegisterUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterUsernameActionPerformed
         // TODO add your handling code here:
@@ -677,10 +1300,10 @@ public class Main extends javax.swing.JFrame {
         ContentArea.removeAll();
 
         // Create instance of ManageFarmerPanel
-        ManageFarmerPanel manageFarmers = new ManageFarmerPanel();
+        //ManageFarmerPanel manageFarmers = new ManageFarmerPanel();
 
         // Add to content panel
-        ContentArea.add(manageFarmers, BorderLayout.CENTER);
+        //ContentArea.add(manageFarmers, BorderLayout.CENTER);
 
         // Refresh panel
         ContentArea.revalidate();
@@ -702,24 +1325,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) FarmerContentArea.getLayout();
+        cl.show(FarmerContentArea, "card3");         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) FarmerContentArea.getLayout();
+        cl.show(FarmerContentArea, "card2");         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         nav.show("card6");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void BrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BrandActionPerformed
 
     private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
         // TODO add your handling code here:
@@ -736,6 +1353,120 @@ public class Main extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     deleteSelectedProduct();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void ProductNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProductNameKeyPressed
+        //ProductName.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_ProductNameKeyPressed
+
+    private void PriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PriceKeyPressed
+   // Price.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_PriceKeyPressed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        cartController.addToCart("Rake", 1500);
+        updateTotals();                         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        cartController.removeLastItem();
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        if (cartController.isCartEmpty()) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "Cart is empty!\nPlease add products before checkout.",
+                "Empty Cart",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        double subtotal = cartController.getTotalWithoutVAT();
+        double vat = cartController.getVAT();
+        double total = cartController.getTotalPrice();
+
+        String message =
+                "PAYMENT SUMMARY\n\n" +
+                "Subtotal: Rs " + subtotal + "\n" +
+                "VAT (13%): Rs " + vat + "\n" +
+                "---------------------------\n" +
+                "Total Payable: Rs " + total + "\n\n" +
+                "Thank you for shopping with us!";
+
+        JOptionPane.showMessageDialog(
+            this,
+            message,
+            "Checkout Successful",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        cartController.clearCart();
+        updateTotals();                 // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        cartController.addToCart("Crocodile Steel Hoe Head", 3500);
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        cartController.addToCart("Watering Can", 750);
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        cartController.addToCart("Wheel Barrow", 4500);
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        cartController.addToCart("Bayer Roundup Herbicide", 250);
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        cartController.addToCart("UPL Saaf Fungicide", 150);
+        updateTotals();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        sortController.sortByName();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        sortController.sortByPrice();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        sortController.search(txtSearch.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void cmbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoryActionPerformed
+        String category = cmbCategory.getSelectedItem().toString();
+    sortController.filterByCategory(category);       // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCategoryActionPerformed
+
+    private void txtSearchTechniqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchTechniqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchTechniqueActionPerformed
+
+    private void contentButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentButtonSearchActionPerformed
+        controller.filter(
+        cmbTerrain.getSelectedItem().toString(),
+        cmbSeason.getSelectedItem().toString(),
+        txtSearchTechnique.getText()
+        );            // TODO add your handling code here:
+    }//GEN-LAST:event_contentButtonSearchActionPerformed
+
+    private void cmbTerrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTerrainActionPerformed
+        contentButtonSearchActionPerformed(null);        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTerrainActionPerformed
+
+    private void cmbSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSeasonActionPerformed
+        contentButtonSearchActionPerformed(null);        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSeasonActionPerformed
 
     private void deleteSelectedProduct() {
     // 1. Get the table model
@@ -769,27 +1500,19 @@ public class Main extends javax.swing.JFrame {
     private void saveProductToTable() {
     // 1. Validate Inputs
     if (ValidationController.isEmpty(ProductName, "Product Name")) return;
-    if (ValidationController.isEmpty(Brand, "Brand")) return;
     if (!ValidationController.isNumeric(Price, "Price")) return;
-    if (!ValidationController.isNumeric(Quantity, "Quantity")) return;
 
     // 2. Get Data
     String name = ProductName.getText().trim();
     String category = comboCategory.getSelectedItem().toString();
-    String brandName = Brand.getText().trim();
     String priceVal = Price.getText().trim();
-    String qtyVal = Quantity.getText().trim();
-    String desc = Description.getText().trim();
 
     // 3. Add to Table
     javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
     model.addRow(new Object[]{
         name, 
-        category, 
-        brandName, 
+        category,  
         Double.parseDouble(priceVal), 
-        Integer.parseInt(qtyVal), 
-        desc
     });
 
     // 4. Success and Clear
@@ -797,14 +1520,36 @@ public class Main extends javax.swing.JFrame {
     clearProductFields();
 }
 
-private void clearProductFields() {
+private void clearProductFields() 
+{
     ProductName.setText("");
-    Brand.setText("");
     Price.setText("");
-    Quantity.setText("");
-    Description.setText("");
     comboCategory.setSelectedIndex(0);
 }
+
+    private void updateTotals() 
+    {
+        subTotal.setText("Subtotal: Rs " + cartController.getTotalWithoutVAT());
+        VAT.setText("VAT (13%): Rs " + cartController.getVAT());
+        total.setText("Total Payable: Rs " + cartController.getTotalPrice());
+    }
+    
+    private ArrayList<JPanel> getProductCards() 
+    {
+        ArrayList<JPanel> cards = new ArrayList<>();
+
+        for (Component c : productPanel.getComponents()) 
+        {
+            if (c instanceof JPanel) 
+            {
+                cards.add((JPanel) c);
+            }
+        }
+        return cards;
+    }
+    
+    
+
     
     /**
      * @param args the command line arguments
@@ -835,9 +1580,7 @@ private void clearProductFields() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdminPanel;
     private javax.swing.JPanel AuthPanel;
-    private javax.swing.JTextField Brand;
     private javax.swing.JPanel ContentArea;
-    private javax.swing.JTextArea Description;
     private javax.swing.JPanel FarmerContentArea;
     private javax.swing.JPanel FarmerPanel;
     private javax.swing.JPanel FarmerSideBar;
@@ -850,7 +1593,6 @@ private void clearProductFields() {
     private javax.swing.JPanel ManageOrder;
     private javax.swing.JTextField Price;
     private javax.swing.JTextField ProductName;
-    private javax.swing.JTextField Quantity;
     private javax.swing.JTextField RegisterAddress;
     private javax.swing.JButton RegisterButton;
     private javax.swing.JTextField RegisterContact;
@@ -859,16 +1601,41 @@ private void clearProductFields() {
     private javax.swing.JPanel RegisterPanel;
     private javax.swing.JTextField RegisterPassword;
     private javax.swing.JTextField RegisterUsername;
+    private javax.swing.JPanel SelectionSortPanel;
     private javax.swing.JPanel SideBar;
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel VAT;
+    private javax.swing.JPanel agroforestry;
     private javax.swing.JPanel authCardPanel;
     private javax.swing.JButton btnManageFarmers;
     private javax.swing.JButton buttonClear;
     private javax.swing.JButton buttonSave;
+    private javax.swing.JPanel buyToolsAndPesticides;
+    private javax.swing.JPanel cartPanel;
+    private javax.swing.JTable cartTable;
+    private javax.swing.JComboBox<String> cmbCategory;
+    private javax.swing.JComboBox<String> cmbSeason;
+    private javax.swing.JComboBox<String> cmbTerrain;
     private javax.swing.JComboBox<String> comboCategory;
+    private javax.swing.JButton contentButtonSearch;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel drip;
+    private javax.swing.JPanel farmingTechniques;
+    private javax.swing.JPanel greenhouse;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -877,13 +1644,77 @@ private void clearProductFields() {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextPane jTextPane5;
+    private javax.swing.JTextPane jTextPane6;
+    private javax.swing.JTextPane jTextPane7;
     private javax.swing.JPanel mainCardPanel;
+    private javax.swing.JPanel mulching;
+    private javax.swing.JPanel paddy;
+    private javax.swing.JPanel productCard1;
+    private javax.swing.JPanel productCard2;
+    private javax.swing.JPanel productCard3;
+    private javax.swing.JPanel productCard4;
+    private javax.swing.JPanel productCard5;
+    private javax.swing.JPanel productCard6;
+    private javax.swing.JPanel productPanel;
+    private javax.swing.JPanel rotation;
+    private javax.swing.JLabel subTotal;
+    private javax.swing.JPanel terrace;
+    private javax.swing.JLabel total;
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearchTechnique;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,64 +8,57 @@ package Model;
  *
  * @author ACER
  */
+
 public class Product 
 {
-    private int productId;
-    private String productName;
-    private String category;    // It can be pesticide, tools or seeds for sale
+    private String name;
     private double price;
-    private int stockQuantity;
-    private String usageInstruction;
-    
-    // Getter Methods
-    public int getProductId()
+    private String category;   // Tool / Pesticide
+    private String imagePath;
+
+    public Product(String name, double price, String category, String imagePath) 
     {
-        return this.productId;
-    }
-    public String getProductName()
-    {
-        return this.productName;
-    }
-    public String getCategory()
-    {
-        return this.category;
-    }
-    public double getPrice()
-    {
-        return this.price;
-    }
-    public int getStockQuantity()
-    {
-        return this.stockQuantity;
-    }
-    public String getUsageInstruction()
-    {
-        return this.usageInstruction;
-    }
-    
-    // Setter Methods
-    public void setProductId(int productId)
-    {
-        this.productId = productId;
-    }
-    public void setProductName(String productName)
-    {
-        this.productName = productName;
-    }
-    public void setCategory(String category)
-    {
-        this.category = category;
-    }
-    public void setPrice(double price)
-    {
+        this.name = name;
         this.price = price;
+        this.category = category;
+        this.imagePath = imagePath;
     }
-    public void setStockQuantity(int stockQuantity)
-    {
-        this.stockQuantity = stockQuantity;
+
+    // getters & setters
+    public String getName() 
+    { 
+        return name; 
     }
-    public void setUsageInstruction(String usageInstruction)
+    public void setName(String name) 
     {
-        this.usageInstruction = usageInstruction;
+        this.name = name; 
+    }
+
+    public double getPrice() 
+    {
+        return price; 
+    }
+    public void setPrice(double price) 
+    {
+        this.price = price; 
+    }
+
+    public String getCategory() 
+    {
+        return category; 
+    }
+    public void setCategory(String category) 
+    {
+        this.category = category; 
+    }
+
+    public String getImagePath() 
+    {
+        return imagePath; 
+    }
+    public void setImagePath(String imagePath) 
+    {
+        this.imagePath = imagePath; 
     }
 }
+
