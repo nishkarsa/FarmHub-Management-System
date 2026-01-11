@@ -8,34 +8,46 @@ package Model;
  *
  * @author ACER
  */
-public class Farmer extends User
+public class Farmer
 {
-    private String location;
-    private String farmType;    // Farm type can be crop, livestock or mixed
-    
-    // Constructor
-    public Farmer()
+    private int id;
+    private String name;
+    private String phone;
+    private String address;
+    private String status;   // Active / Inactive
+
+    public Farmer(int id, String name, String phone, String address, String status) 
     {
-        this.role = "Farmer";
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.status = status;
     }
-    
-    // Getter Methods
-    public String getLocation()
+
+    public int getId() 
     {
-        return this.location;
+        return id; 
     }
-    public String getFarmType()
+    public String getName() 
     {
-        return this.farmType;
+        return name; 
     }
-    
-    // Setter Methods
-    public void setLocation(String location)
+    public String getPhone() 
     {
-        this.location = location;
+        return phone; 
     }
-    public void setFarmType(String farmType)
+    public String getAddress() 
     {
-        this.farmType = farmType;
+        return address; 
+    }
+    public String getStatus() 
+    {
+        return status; 
+    }
+
+    public void setStatus(String status) 
+    {
+        this.status = status; 
     }
 }

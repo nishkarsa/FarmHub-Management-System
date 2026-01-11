@@ -4,11 +4,13 @@
  */
 package View;
 
+import Model.*;
 import Controller.*;
 import java.awt.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,6 +40,7 @@ public class Main extends javax.swing.JFrame {
        cartController = new CartController(cartTable);
        sortController = new SelectionSort(productPanel);
        controller = new FarmingContentController(contentPanel);
+       loadFarmers();
 
     
     // Show login first
@@ -88,6 +91,12 @@ public class Main extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         ContentArea = new javax.swing.JPanel();
+        ManageFarmer = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        farmerTable = new javax.swing.JTable();
+        cmbStatus = new javax.swing.JComboBox<>();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
         ManageOrder = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         ProductName = new javax.swing.JTextField();
@@ -99,6 +108,11 @@ public class Main extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        DeleteHistory = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         FarmerPanel = new javax.swing.JPanel();
         FarmerSideBar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -388,7 +402,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)))
                 .addComponent(LoginImg1, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1309, Short.MAX_VALUE))
+                .addContainerGap(1313, Short.MAX_VALUE))
         );
         RegisterPanelLayout.setVerticalGroup(
             RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,6 +517,76 @@ public class Main extends javax.swing.JFrame {
         ContentArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(25, 25, 25, 25));
         ContentArea.setLayout(new java.awt.CardLayout());
 
+        farmerTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Phone", "Address", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(farmerTable);
+
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        jButton21.setText("Update Status");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
+        jButton22.setText("Delete Inactive Farmer");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ManageFarmerLayout = new javax.swing.GroupLayout(ManageFarmer);
+        ManageFarmer.setLayout(ManageFarmerLayout);
+        ManageFarmerLayout.setHorizontalGroup(
+            ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ManageFarmerLayout.createSequentialGroup()
+                .addGroup(ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ManageFarmerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ManageFarmerLayout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton21)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton22)))
+                .addContainerGap(1609, Short.MAX_VALUE))
+        );
+        ManageFarmerLayout.setVerticalGroup(
+            ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ManageFarmerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton21)
+                    .addComponent(jButton22))
+                .addContainerGap(1336, Short.MAX_VALUE))
+        );
+
+        ContentArea.add(ManageFarmer, "card3");
+
         ManageOrder.setBackground(new java.awt.Color(255, 255, 204));
 
         Title.setBackground(new java.awt.Color(255, 255, 204));
@@ -615,7 +699,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(buttonClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1297, Short.MAX_VALUE))
+                .addContainerGap(1301, Short.MAX_VALUE))
         );
         ManageOrderLayout.setVerticalGroup(
             ManageOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,6 +728,55 @@ public class Main extends javax.swing.JFrame {
         );
 
         ContentArea.add(ManageOrder, "card2");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane12.setViewportView(jTable2);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane13.setViewportView(jTable3);
+
+        javax.swing.GroupLayout DeleteHistoryLayout = new javax.swing.GroupLayout(DeleteHistory);
+        DeleteHistory.setLayout(DeleteHistoryLayout);
+        DeleteHistoryLayout.setHorizontalGroup(
+            DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DeleteHistoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(1304, Short.MAX_VALUE))
+        );
+        DeleteHistoryLayout.setVerticalGroup(
+            DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DeleteHistoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1136, Short.MAX_VALUE))
+        );
+
+        ContentArea.add(DeleteHistory, "card4");
 
         AdminPanel.add(ContentArea, java.awt.BorderLayout.CENTER);
 
@@ -758,7 +891,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(cmbTerrain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1792, Short.MAX_VALUE))
+                .addContainerGap(1796, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -948,7 +1081,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton19)
-                .addContainerGap(1561, Short.MAX_VALUE))
+                .addContainerGap(1523, Short.MAX_VALUE))
         );
         SelectionSortPanelLayout.setVerticalGroup(
             SelectionSortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1296,19 +1429,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnManageFarmersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFarmersActionPerformed
-        // Remove old content
-        ContentArea.removeAll();
-
-        // Create instance of ManageFarmerPanel
-        //ManageFarmerPanel manageFarmers = new ManageFarmerPanel();
-
-        // Add to content panel
-        //ContentArea.add(manageFarmers, BorderLayout.CENTER);
-
-        // Refresh panel
-        ContentArea.revalidate();
-        ContentArea.repaint();
-        // TODO add your handling code here:
+    CardLayout cl = (CardLayout) ContentArea.getLayout();
+    cl.show(ContentArea, "card3");
     }//GEN-LAST:event_btnManageFarmersActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1317,7 +1439,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    CardLayout cl = (CardLayout) ContentArea.getLayout();
+    cl.show(ContentArea, "card4");         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1468,6 +1591,95 @@ public class Main extends javax.swing.JFrame {
         contentButtonSearchActionPerformed(null);        // TODO add your handling code here:
     }//GEN-LAST:event_cmbSeasonActionPerformed
 
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        int row = farmerTable.getSelectedRow();
+
+        // 1. Check if row is selected
+        if (row == -1) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "Please select a farmer to update!",
+                "No Selection",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        String newStatus = cmbStatus.getSelectedItem().toString();
+        String currentStatus = farmerTable.getValueAt(row, 4).toString();
+
+        // 2. Check if status is already same
+        if (newStatus.equals(currentStatus)) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "Farmer is already " + newStatus + "!",
+                "No Change",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
+        // 3. Confirm update
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Change farmer status from " + currentStatus + " to " + newStatus + "?",
+            "Confirm Status Update",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) 
+        {
+            FarmerController.updateStatus(row, newStatus);
+            loadFarmers();
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        int row = farmerTable.getSelectedRow();
+
+        // 1. Check if any row is selected
+        if (row == -1) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "Please select a farmer first!",
+                "No Selection",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // 2. Check if farmer is Inactive
+        String status = farmerTable.getValueAt(row, 4).toString();
+
+        if (!status.equals("Inactive")) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "Only INACTIVE farmers can be deleted!",
+                "Delete Blocked",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        // 3. Confirm delete
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to delete this inactive farmer?",
+            "Confirm Delete",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) 
+        {
+            FarmerController.deleteFarmer(row);
+            loadFarmers();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22ActionPerformed
+
     private void deleteSelectedProduct() {
     // 1. Get the table model
     javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
@@ -1512,7 +1724,7 @@ public class Main extends javax.swing.JFrame {
     model.addRow(new Object[]{
         name, 
         category,  
-        Double.parseDouble(priceVal), 
+        Double.parseDouble(priceVal),
     });
 
     // 4. Success and Clear
@@ -1548,6 +1760,19 @@ private void clearProductFields()
         return cards;
     }
     
+    private void loadFarmers() 
+    {
+        DefaultTableModel model = (DefaultTableModel) farmerTable.getModel();
+        model.setRowCount(0);
+
+        for (Farmer f : FarmerController.getAllFarmers()) 
+        {
+            model.addRow(new Object[]
+            {
+                f.getId(), f.getName(), f.getPhone(), f.getAddress(), f.getStatus()
+            });
+        }
+    }
     
 
     
@@ -1581,6 +1806,7 @@ private void clearProductFields()
     private javax.swing.JPanel AdminPanel;
     private javax.swing.JPanel AuthPanel;
     private javax.swing.JPanel ContentArea;
+    private javax.swing.JPanel DeleteHistory;
     private javax.swing.JPanel FarmerContentArea;
     private javax.swing.JPanel FarmerPanel;
     private javax.swing.JPanel FarmerSideBar;
@@ -1590,6 +1816,7 @@ private void clearProductFields()
     private javax.swing.JPanel LoginPanel;
     private javax.swing.JPasswordField LoginPassword;
     private javax.swing.JTextField LoginUsername;
+    private javax.swing.JPanel ManageFarmer;
     private javax.swing.JPanel ManageOrder;
     private javax.swing.JTextField Price;
     private javax.swing.JTextField ProductName;
@@ -1615,11 +1842,13 @@ private void clearProductFields()
     private javax.swing.JTable cartTable;
     private javax.swing.JComboBox<String> cmbCategory;
     private javax.swing.JComboBox<String> cmbSeason;
+    private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JComboBox<String> cmbTerrain;
     private javax.swing.JComboBox<String> comboCategory;
     private javax.swing.JButton contentButtonSearch;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JPanel drip;
+    private javax.swing.JTable farmerTable;
     private javax.swing.JPanel farmingTechniques;
     private javax.swing.JPanel greenhouse;
     private javax.swing.JButton jButton1;
@@ -1635,6 +1864,8 @@ private void clearProductFields()
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1682,8 +1913,11 @@ private void clearProductFields()
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1693,6 +1927,8 @@ private void clearProductFields()
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
