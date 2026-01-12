@@ -41,6 +41,12 @@ public class FarmerController
 
     public static void deleteFarmer(int index) 
     {
-        farmers.remove(index);
+        Farmer removed = farmers.remove(index);
+        DeletedFarmerQueue.addDeletedFarmer(removed);  // send to history
+    }
+    
+    public static void restoreFarmer(Farmer f) 
+    {
+        farmers.add(f);   // add back to active list
     }
 }

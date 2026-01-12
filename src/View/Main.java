@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -37,12 +38,36 @@ public class Main extends javax.swing.JFrame {
         
         nav = new NavigationController(mainCardPanel);
         auth = new AuthController(nav);
-       cartController = new CartController(cartTable);
-       sortController = new SelectionSort(productPanel);
-       controller = new FarmingContentController(contentPanel);
-       loadFarmers();
+        cartController = new CartController(cartTable);
+        sortController = new SelectionSort(productPanel);
+        controller = new FarmingContentController(contentPanel);
+        loadFarmers();
+        loadDeletedFarmers();
 
+        JTableHeader header = farmerTable.getTableHeader();
+        header.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        header.setBackground(new Color(52, 152, 219));
+        header.setForeground(Color.WHITE);
+        header.setPreferredSize(new Dimension(100, 40));
+        
+        farmerTable.getColumnModel().getColumn(0).setPreferredWidth(60);  // ID
+        farmerTable.getColumnModel().getColumn(1).setPreferredWidth(160); // Name
+        farmerTable.getColumnModel().getColumn(2).setPreferredWidth(140); // Phone
+        farmerTable.getColumnModel().getColumn(3).setPreferredWidth(160); // Address
+        farmerTable.getColumnModel().getColumn(4).setPreferredWidth(120); // Status
     
+        JTableHeader deletedHeader = deletedFarmerTable.getTableHeader();
+        deletedHeader.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        deletedHeader.setBackground(new Color(52, 152, 219));
+        deletedHeader.setForeground(Color.WHITE);
+        deletedHeader.setPreferredSize(new Dimension(100, 40));
+        
+        deletedFarmerTable.getColumnModel().getColumn(0).setPreferredWidth(60);  // ID
+        deletedFarmerTable.getColumnModel().getColumn(1).setPreferredWidth(160); // Name
+        deletedFarmerTable.getColumnModel().getColumn(2).setPreferredWidth(140); // Phone
+        deletedFarmerTable.getColumnModel().getColumn(3).setPreferredWidth(160); // Address
+        deletedFarmerTable.getColumnModel().getColumn(4).setPreferredWidth(120); // Status
+        
     // Show login first
     nav.show("card6");
     }
@@ -109,8 +134,9 @@ public class Main extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         DeleteHistory = new javax.swing.JPanel();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        deletedFarmerTable = new javax.swing.JTable();
+        jButton23 = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         FarmerPanel = new javax.swing.JPanel();
@@ -517,6 +543,11 @@ public class Main extends javax.swing.JFrame {
         ContentArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(25, 25, 25, 25));
         ContentArea.setLayout(new java.awt.CardLayout());
 
+        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 152, 219), 2, true));
+
+        farmerTable.setBackground(new java.awt.Color(255, 255, 255));
+        farmerTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        farmerTable.setForeground(new java.awt.Color(51, 51, 51));
         farmerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -536,18 +567,39 @@ public class Main extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        farmerTable.setFillsViewportHeight(true);
+        farmerTable.setFocusable(false);
+        farmerTable.setGridColor(new java.awt.Color(221, 221, 221));
+        farmerTable.setRowHeight(32);
+        farmerTable.setSelectionBackground(new java.awt.Color(46, 134, 193));
+        farmerTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        farmerTable.setShowGrid(true);
         jScrollPane1.setViewportView(farmerTable);
 
+        cmbStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jButton21.setBackground(new java.awt.Color(52, 152, 219));
+        jButton21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton21.setForeground(new java.awt.Color(255, 255, 255));
         jButton21.setText("Update Status");
+        jButton21.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        jButton21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton21.setFocusPainted(false);
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton21ActionPerformed(evt);
             }
         });
 
+        jButton22.setBackground(new java.awt.Color(153, 0, 0));
+        jButton22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton22.setForeground(new java.awt.Color(255, 255, 255));
         jButton22.setText("Delete Inactive Farmer");
+        jButton22.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        jButton22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton22.setFocusPainted(false);
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton22ActionPerformed(evt);
@@ -579,10 +631,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21)
                     .addComponent(jButton22))
-                .addContainerGap(1336, Short.MAX_VALUE))
+                .addContainerGap(1319, Short.MAX_VALUE))
         );
 
         ContentArea.add(ManageFarmer, "card3");
@@ -729,18 +781,51 @@ public class Main extends javax.swing.JFrame {
 
         ContentArea.add(ManageOrder, "card2");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 152, 219), 2, true));
+
+        deletedFarmerTable.setBackground(new java.awt.Color(255, 255, 255));
+        deletedFarmerTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        deletedFarmerTable.setForeground(new java.awt.Color(51, 51, 51));
+        deletedFarmerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Name", "Phone", "Address", "Status"
             }
-        ));
-        jScrollPane12.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        deletedFarmerTable.setFillsViewportHeight(true);
+        deletedFarmerTable.setFocusable(false);
+        deletedFarmerTable.setGridColor(new java.awt.Color(221, 221, 221));
+        deletedFarmerTable.setRowHeight(32);
+        deletedFarmerTable.setSelectionBackground(new java.awt.Color(46, 134, 193));
+        deletedFarmerTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        deletedFarmerTable.setShowGrid(true);
+        jScrollPane14.setViewportView(deletedFarmerTable);
+
+        jButton23.setBackground(new java.awt.Color(52, 152, 219));
+        jButton23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton23.setForeground(new java.awt.Color(255, 255, 255));
+        jButton23.setText("Restore Farmer");
+        jButton23.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        jButton23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton23.setFocusPainted(false);
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -760,20 +845,27 @@ public class Main extends javax.swing.JFrame {
         DeleteHistoryLayout.setHorizontalGroup(
             DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeleteHistoryLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DeleteHistoryLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DeleteHistoryLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DeleteHistoryLayout.createSequentialGroup()
+                        .addGap(357, 357, 357)
+                        .addComponent(jButton23)))
                 .addContainerGap(1304, Short.MAX_VALUE))
         );
         DeleteHistoryLayout.setVerticalGroup(
             DeleteHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeleteHistoryLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jButton23)
+                .addGap(67, 67, 67)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1136, Short.MAX_VALUE))
+                .addContainerGap(1044, Short.MAX_VALUE))
         );
 
         ContentArea.add(DeleteHistory, "card4");
@@ -1677,8 +1769,36 @@ public class Main extends javax.swing.JFrame {
         {
             FarmerController.deleteFarmer(row);
             loadFarmers();
+            loadDeletedFarmers();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        Farmer restored = DeletedFarmerQueue.restoreFarmer();
+
+        if (restored == null) 
+        {
+            JOptionPane.showMessageDialog(
+                this,
+                "No deleted farmers to restore!",
+                "Queue Empty",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
+        FarmerController.restoreFarmer(restored);
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Farmer restored: " + restored.getName(),
+            "Restore Successful",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+
+        loadDeletedFarmers();   // refresh history
+        loadFarmers();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23ActionPerformed
 
     private void deleteSelectedProduct() {
     // 1. Get the table model
@@ -1774,6 +1894,25 @@ private void clearProductFields()
         }
     }
     
+    public void loadDeletedFarmers() 
+    {
+
+        DefaultTableModel model = (DefaultTableModel) deletedFarmerTable.getModel();
+        model.setRowCount(0);
+
+        for (Farmer f : DeletedFarmerQueue.getDeletedFarmers()) 
+        {
+            model.addRow(new Object[]
+            {
+                f.getId(),
+                f.getName(),
+                f.getPhone(),
+                f.getAddress(),
+                f.getStatus()
+            });
+        }
+    }
+    
 
     
     /**
@@ -1847,6 +1986,7 @@ private void clearProductFields()
     private javax.swing.JComboBox<String> comboCategory;
     private javax.swing.JButton contentButtonSearch;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JTable deletedFarmerTable;
     private javax.swing.JPanel drip;
     private javax.swing.JTable farmerTable;
     private javax.swing.JPanel farmingTechniques;
@@ -1866,6 +2006,7 @@ private void clearProductFields()
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1916,8 +2057,8 @@ private void clearProductFields()
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1927,7 +2068,6 @@ private void clearProductFields()
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
