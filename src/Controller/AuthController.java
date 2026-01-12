@@ -35,16 +35,4 @@ public class AuthController
             nav.show("card4"); // This is FarmerPanel in your provided Main.java
         }
     }
-
-    public void registerFarmer(JTextField name, JTextField username, JPasswordField password, JTextField contact) {
-        if (ValidationController.isEmpty(name, "Full Name")) return;
-        if (ValidationController.isEmpty(username, "Username")) return;
-        if (ValidationController.isEmptyPassword(password)) return;
-        if (ValidationController.isEmpty(contact, "Contact")) return;
-
-        // Save logic here...
-        
-        JOptionPane.showMessageDialog(null, "Registration Successful!");
-        nav.show("card6"); // Navigate back to the Auth/Login container
-    }
 }

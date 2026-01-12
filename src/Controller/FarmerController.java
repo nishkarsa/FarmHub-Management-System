@@ -14,10 +14,10 @@ import Model.*;
 public class FarmerController 
 {
     private static LinkedList<Farmer> farmers = new LinkedList<>();
-
+    
     static 
     {
-        farmers.add(new Farmer(1,"Ram Gurung","9861545669","Kathmandu","Active"));
+        farmers.add(new Farmer(1,"Ram Gurung","9861545669","K athmandu","Active"));
         farmers.add(new Farmer(2,"Lokesh","9701259845","Lalitpur","Active"));
         farmers.add(new Farmer(3,"Hari Bahadur","9805649922","Bhaktapur","Inactive"));
         farmers.add(new Farmer(4,"Gita Sharma","9815874136","Pokhara","Active"));
@@ -49,4 +49,11 @@ public class FarmerController
     {
         farmers.add(f);   // add back to active list
     }
+    
+    public static void addFarmer(String name, String phone, String address) 
+    {
+    int nextId = farmers.size() + 1; // Basic ID generation
+    Farmer newFarmer = new Farmer(nextId, name, phone, address, "Active");
+    farmers.add(newFarmer);
+}
 }

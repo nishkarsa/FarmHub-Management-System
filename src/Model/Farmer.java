@@ -10,11 +10,11 @@ package Model;
  */
 public class Farmer
 {
-    private int id;
-    private String name;
-    private String phone;
-    private String address;
-    private String status;   // Active / Inactive
+    private final int id;
+    private final String name;
+    private final String phone;
+    private final String address;
+    private String status = "Active";   // Active / Inactive
 
     public Farmer(int id, String name, String phone, String address, String status) 
     {

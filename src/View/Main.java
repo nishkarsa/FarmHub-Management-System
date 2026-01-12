@@ -29,7 +29,14 @@ public class Main extends javax.swing.JFrame {
     SelectionSort sortController;
     
     FarmingContentController controller;
-
+    
+    boolean registerNameCleared = false;
+    boolean registerUserNameCleared = false;
+    boolean registerPasswordCleared = false;
+    boolean registerContactCleared = false;
+    boolean registerAddressCleared = false;
+    boolean registerEmailCleared = false;
+    
     /**
      * Creates new form Main
      */
@@ -67,7 +74,7 @@ public class Main extends javax.swing.JFrame {
         deletedFarmerTable.getColumnModel().getColumn(2).setPreferredWidth(140); // Phone
         deletedFarmerTable.getColumnModel().getColumn(3).setPreferredWidth(160); // Address
         deletedFarmerTable.getColumnModel().getColumn(4).setPreferredWidth(120); // Status
-        
+                
     // Show login first
     nav.show("card6");
     }
@@ -99,9 +106,9 @@ public class Main extends javax.swing.JFrame {
         LoginImg = new javax.swing.JLabel();
         RegisterPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        RegisterName = new javax.swing.JTextField();
         RegisterUsername = new javax.swing.JTextField();
         RegisterPassword = new javax.swing.JTextField();
-        RegisterName = new javax.swing.JTextField();
         RegisterContact = new javax.swing.JTextField();
         RegisterAddress = new javax.swing.JTextField();
         RegisterEmail = new javax.swing.JTextField();
@@ -354,9 +361,23 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Farmer Registration");
 
+        RegisterName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RegisterName.setText("Full Name");
+        RegisterName.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterNameFocusGained(evt);
+            }
+        });
+
         RegisterUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         RegisterUsername.setText("Username");
         RegisterUsername.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterUsernameFocusGained(evt);
+            }
+        });
         RegisterUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterUsernameActionPerformed(evt);
@@ -366,26 +387,43 @@ public class Main extends javax.swing.JFrame {
         RegisterPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         RegisterPassword.setText("Password");
         RegisterPassword.setPreferredSize(new java.awt.Dimension(250, 35));
-
-        RegisterName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RegisterName.setText("Full Name");
-        RegisterName.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterPasswordFocusGained(evt);
+            }
+        });
 
         RegisterContact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         RegisterContact.setText("Contact");
         RegisterContact.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterContact.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterContactFocusGained(evt);
+            }
+        });
 
         RegisterAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         RegisterAddress.setText("Address");
         RegisterAddress.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterAddressFocusGained(evt);
+            }
+        });
 
         RegisterEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         RegisterEmail.setText("Email");
         RegisterEmail.setPreferredSize(new java.awt.Dimension(250, 35));
+        RegisterEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RegisterEmailFocusGained(evt);
+            }
+        });
 
         RegisterButton.setBackground(new java.awt.Color(46, 125, 50));
         RegisterButton.setForeground(new java.awt.Color(255, 255, 255));
         RegisterButton.setText("Register");
+        RegisterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RegisterButton.setPreferredSize(new java.awt.Dimension(250, 40));
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,6 +433,7 @@ public class Main extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButton2.setText("Back to Login");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setPreferredSize(new java.awt.Dimension(250, 35));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1509,8 +1548,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        auth.registerFarmer(RegisterName, RegisterUsername, (JPasswordField) RegisterPassword, RegisterContact);
-        // TODO add your handling code here:
+    String name = RegisterName.getText();
+    String contact = RegisterContact.getText();
+    String address = RegisterAddress.getText();
+    
+    // Call FarmerController directly
+    FarmerController.addFarmer(name, contact, address);
+    
+    JOptionPane.showMessageDialog(this, "Farmer Registered Successfully!");
+    loadFarmers(); // Refresh your table
+    nav.show("card2"); // Return to login
+    
+                                                 // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1800,6 +1849,54 @@ public class Main extends javax.swing.JFrame {
         loadFarmers();         // TODO add your handling code here:
     }//GEN-LAST:event_jButton23ActionPerformed
 
+    private void RegisterNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterNameFocusGained
+    if (!registerNameCleared) 
+    {
+        RegisterName.setText("");
+        registerNameCleared = true;
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterNameFocusGained
+
+    private void RegisterUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterUsernameFocusGained
+    if (!registerUserNameCleared)
+    {
+        RegisterUsername.setText("");
+        registerUserNameCleared = true;  
+    }      // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterUsernameFocusGained
+
+    private void RegisterPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterPasswordFocusGained
+    if (!registerPasswordCleared)
+    {
+        RegisterPassword.setText("");
+        registerPasswordCleared = true;  
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterPasswordFocusGained
+
+    private void RegisterContactFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterContactFocusGained
+    if (!registerContactCleared)
+    {
+        RegisterContact.setText("");
+        registerContactCleared = true;  
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterContactFocusGained
+
+    private void RegisterAddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterAddressFocusGained
+    if (!registerAddressCleared)
+    {
+        RegisterAddress.setText("");
+        registerAddressCleared = true;  
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterAddressFocusGained
+
+    private void RegisterEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterEmailFocusGained
+    if (!registerEmailCleared)
+    {
+        RegisterEmail.setText("");
+        registerEmailCleared = true;  
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterEmailFocusGained
+
     private void deleteSelectedProduct() {
     // 1. Get the table model
     javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
@@ -1912,8 +2009,6 @@ private void clearProductFields()
             });
         }
     }
-    
-
     
     /**
      * @param args the command line arguments
