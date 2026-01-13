@@ -12,16 +12,14 @@ package Model;
 public class Product 
 {
     private String name;
-    private double price;
     private String category;   // Tool / Pesticide
-    private String imagePath;
+    private long price;
 
-    public Product(String name, double price, String category, String imagePath) 
+    public Product(String name, String category, long price) 
     {
         this.name = name;
-        this.price = price;
         this.category = category;
-        this.imagePath = imagePath;
+        this.price = price;
     }
 
     // getters & setters
@@ -38,7 +36,7 @@ public class Product
     {
         return price; 
     }
-    public void setPrice(double price) 
+    public void setPrice(long price) 
     {
         this.price = price; 
     }
@@ -50,15 +48,6 @@ public class Product
     public void setCategory(String category) 
     {
         this.category = category; 
-    }
-
-    public String getImagePath() 
-    {
-        return imagePath; 
-    }
-    public void setImagePath(String imagePath) 
-    {
-        this.imagePath = imagePath; 
     }
 }
 
