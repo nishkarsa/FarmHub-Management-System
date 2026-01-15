@@ -30,7 +30,7 @@ public class CartController
     /**
      * Adds a product to the cart. If the product already exists, it increases 
      * the quantity; otherwise, it pushes a new item onto the stack.
-     * * @param name the name of the product
+     * @param name the name of the product
      * @param price the price of the product
      */
     public void addToCart(String name, double price) 
