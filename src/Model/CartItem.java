@@ -5,8 +5,9 @@
 package Model;
 
 /**
- *
- * @author ACER
+ * Represents an individual item within a shopping cart.
+ * This class stores product details.
+ * @author Nishkarsa
  */
 public class CartItem 
 {
@@ -14,6 +15,7 @@ public class CartItem
     public double price;
     public int quantity;
     
+    // Constructor
     public CartItem(String name, double price, int quantity)
     {
         this.name = name;
@@ -21,6 +23,7 @@ public class CartItem
         this.quantity = quantity;
     }
     
+    // Getter
     public double getTotal()
     {
         return price * quantity;

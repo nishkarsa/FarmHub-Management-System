@@ -5,8 +5,9 @@
 package Model;
 
 /**
- *
- * @author ACER
+ * Represents a Farmer entity within the system.
+ * This class stores farmer profile information.
+ * @author Nishkarsa
  */
 public class Farmer
 {
@@ -16,6 +17,7 @@ public class Farmer
     private final String address;
     private String status = "Active";   // Active / Inactive
 
+    // Constructor
     public Farmer(int id, String name, String phone, String address, String status) 
     {
         this.id = id;
@@ -25,6 +27,7 @@ public class Farmer
         this.status = status;
     }
 
+    // Getter / Setter
     public int getId() 
     {
         return id; 

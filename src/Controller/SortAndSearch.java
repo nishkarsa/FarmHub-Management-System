@@ -3,22 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controller;
-import java.util.ArrayList;
-import javax.swing.JPanel;
+
+import Model.Farmer;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
- *
- * @author ACER
+ * Controller class responsible for sorting, searching, and filtering.
+ * @author Nishkarsa
  */
-public class SelectionSort 
+public class SortAndSearch 
 {
     private JPanel productPanel;
-    
     private ArrayList<JPanel> allProducts = new ArrayList<>();
 
-
-    public SelectionSort(JPanel productPanel) 
+    // Constructor
+    public SortAndSearch(JPanel productPanel) 
     {
         this.productPanel = productPanel;
         
@@ -32,7 +35,10 @@ public class SelectionSort
         }
     }
 
-    // Read all product cards
+    /**
+     * Retrieves all current product card JPanels from the main panel.
+     * @return ArrayList of JPanel components representing product cards.
+     */
     private ArrayList<JPanel> getProductCards() 
     {
         ArrayList<JPanel> cards = new ArrayList<>();
@@ -45,12 +51,23 @@ public class SelectionSort
         }
         return cards;
     }
-
+    
+    /**
+     * Helper method to extract price from a product card.
+     * @param card The JPanel containing product details.
+     * @return The price as a double.
+     */
     private double getPrice(JPanel card) 
     {
         return findPrice(card);
     }
-
+    
+    /**
+     * Recursively searches through a component's children to find a JLabel 
+     * named "lblPrice" and parses its value.
+     * @param comp The component to search.
+     * @return The price as a double, or -1 if not found.
+     */
     private double findPrice(Component comp) 
     {
 
@@ -67,11 +84,13 @@ public class SelectionSort
                 if (value != -1) return value;
             }
         }
-
         return -1;
     }
 
-    // Reload sorted products
+    /**
+     * Clears the UI panel and repopulates it with the provided list of cards.
+     * @param cards The list of JPanels to display.
+     */
     private void reload(ArrayList<JPanel> cards) 
     {
         productPanel.removeAll();
@@ -83,7 +102,9 @@ public class SelectionSort
         productPanel.repaint();
     }
 
-    // Selection Sort by Name
+    /**
+     * Sorts products alphabetically by their component name using Selection Sort.
+     */
     public void sortByName() 
     {
         ArrayList<JPanel> cards = getProductCards();
@@ -109,7 +130,9 @@ public class SelectionSort
         reload(cards);
     }
 
-    // Selection Sort by Price
+    /**
+     * Sorts products by price (Low to High) using Selection Sort.
+     */
     public void sortByPrice() 
     {
         ArrayList<JPanel> cards = getProductCards();
@@ -132,6 +155,10 @@ public class SelectionSort
         reload(cards);
     }
     
+    /**
+     * Filters the original product list based on whether the name contains the keyword.
+     * @param keyword The text to search for.
+     */
     public void search(String keyword) 
     {
         ArrayList<JPanel> filtered = new ArrayList<>();
@@ -147,6 +174,10 @@ public class SelectionSort
         reload(filtered);
     }
 
+    /**
+     * Logic for Selection Sort by Name.
+     * Time Complexity: O(n^2)
+     */
     private void selectionSortByName(ArrayList<JPanel> cards) 
     {
         for (int i = 0; i < cards.size() - 1; i++) 
@@ -165,6 +196,10 @@ public class SelectionSort
         }
     }
 
+    /**
+     * Logic for Selection Sort by Price.
+     * Time Complexity: O(n^2)
+     */
     private void selectionSortByPrice(ArrayList<JPanel> cards) 
     {
         for (int i = 0; i < cards.size() - 1; i++) 
@@ -183,7 +218,10 @@ public class SelectionSort
         }
     }
 
-    
+    /**
+     * Generic sort method that handles multiple sorting criteria.
+     * @param option String identifying the sort type ("Name (A–Z)" or "Price (Low–High)").
+     */
     public void sort(String option) 
     {
         ArrayList<JPanel> cards = getProductCards();
@@ -199,7 +237,11 @@ public class SelectionSort
 
         reload(cards);
     }
-
+    
+    /**
+     * Filters products by a specific category prefix.
+     * @param category The category name (or "All" to reset).
+     */
     public void filterByCategory(String category) 
     {
 
@@ -222,5 +264,76 @@ public class SelectionSort
         reload(filtered);
     }   
 
+    /**
+     * Sorts a LinkedList of Farmer objects using Insertion Sort.
+     * @param list The list of farmers to be sorted.
+     */
+    public static void insertionSortFarmers(LinkedList<Farmer> list) 
+    {
+        for (int i = 1; i < list.size(); i++) 
+        {
+            Farmer key = list.get(i);
+            int j = i - 1;
+
+            // Compare names alphabetically (case-insensitive)
+            while (j >= 0 && list.get(j).getName().compareToIgnoreCase(key.getName()) > 0) 
+            {
+                list.set(j + 1, list.get(j));
+                j = j - 1;
+            }
+            list.set(j + 1, key);
+        }
+    }
     
+    /**
+     * Performs a Linear Search on the product list.
+     * @param keyword The string to search for.
+     */
+    public void linearSearch(String keyword) {
+        ArrayList<JPanel> filtered = new ArrayList<>();
+        String searchKey = keyword.toLowerCase();
+
+        for (JPanel p : allProducts) {
+            if (p.getName() != null && p.getName().toLowerCase().contains(searchKey)) {
+                filtered.add(p);
+            }
+        }
+        reload(filtered);
+    }
+    
+    /**
+     * Performs a Binary Search on the product list.
+     * Note: The list is sorted by name before searching.
+     * Time Complexity: O(log n) for the search itself.
+     * @param keyword The exact string to search for (case-insensitive).
+     */
+    public void binarySearch(String keyword) {
+        // 1. Get a copy of all products and sort them by name (requirement for binary search)
+        ArrayList<JPanel> sortedList = new ArrayList<>(allProducts);
+        selectionSortByName(sortedList);
+
+        ArrayList<JPanel> result = new ArrayList<>();
+        int low = 0;
+        int high = sortedList.size() - 1;
+        String searchKey = keyword.toLowerCase();
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            String midName = sortedList.get(mid).getName().toLowerCase();
+
+            int comparison = midName.compareTo(searchKey);
+
+            if (comparison == 0) {
+                // Found the exact match
+                result.add(sortedList.get(mid));
+                break; 
+            } else if (comparison < 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        // Reload panel with the result (will be empty if not found)
+        reload(result);
+    }
 }

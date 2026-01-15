@@ -6,25 +6,18 @@
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/.git/config</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Farmer.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Product.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Inventory.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/LearningContent.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Order.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/OrderItem.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Invoice.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/Query.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/AuthController.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/NavigationController.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/ValidationController.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/View/loginimg.jpg</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/View/Crop%20farmers_.jpg</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/View/Main.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Model/CartItem.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/CartController.java</file>
-            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/SelectionSort.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/FarmingContentController.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/ProductController.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/FarmerController.java</file>
             <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/DeletedFarmerQueue.java</file>
+            <file>file:/C:/DataStructureAndSpecialistProgramming/CourseWork/FarmHubManagementSystem/src/Controller/SortAndSearch.java</file>
         </group>
     </open-files>
 </project-private>

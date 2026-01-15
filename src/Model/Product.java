@@ -5,8 +5,8 @@
 package Model;
 
 /**
- *
- * @author ACER
+ * Represents a product available in the system, such as a tool or pesticide.
+ * @author Nishkarsa
  */
 
 public class Product 
@@ -14,7 +14,8 @@ public class Product
     private String name;
     private String category;   // Tool / Pesticide
     private long price;
-
+    
+    // Constructor
     public Product(String name, String category, long price) 
     {
         this.name = name;

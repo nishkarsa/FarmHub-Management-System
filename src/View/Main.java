@@ -4,18 +4,20 @@
  */
 package View;
 
-import Model.*;
+import Model.Farmer;
+import Model.Product;
 import Controller.*;
 import java.awt.*;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 /**
- *
- * @author ACER
+ * The entry point of the application.
+ * @author Nishkarsa
  */
 public class Main extends javax.swing.JFrame {
     
@@ -24,13 +26,13 @@ public class Main extends javax.swing.JFrame {
     private AuthController auth;
     private NavigationController nav;
     
-    CartController cartController;
+    private CartController cartController;
     
-    SelectionSort sortController;
+    private SortAndSearch sortSearchController;
+        
+    private FarmingContentController controller;
     
-    FarmingContentController controller;
-    
-    boolean loginUserNameCleared = false;
+    boolean loginUserNameCleared = false;       // to check for clear jTextFields
     boolean loginPasswordCleared = false;
     
     boolean registerNameCleared = false;
@@ -54,7 +56,7 @@ public class Main extends javax.swing.JFrame {
         nav = new NavigationController(mainCardPanel);
         auth = new AuthController(nav);
         cartController = new CartController(cartTable);
-        sortController = new SelectionSort(productPanel);
+        sortSearchController = new SortAndSearch(productPanel);
         controller = new FarmingContentController(contentPanel);
         loadFarmers();
         loadDeletedFarmers();
@@ -100,6 +102,10 @@ public class Main extends javax.swing.JFrame {
     nav.show("card6");
     }
     
+    /**
+     * Retrieves the application's navigation controller.
+     * @return The NavigationController instance used for managing card layout transitions.
+     */
     public NavigationController getNavigation()
     {
         return nav;
@@ -150,6 +156,7 @@ public class Main extends javax.swing.JFrame {
         cmbStatus = new javax.swing.JComboBox<>();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         ManageOrder = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         ProductName = new javax.swing.JTextField();
@@ -673,6 +680,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Sort by Name");
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ManageFarmerLayout = new javax.swing.GroupLayout(ManageFarmer);
         ManageFarmer.setLayout(ManageFarmerLayout);
         ManageFarmerLayout.setHorizontalGroup(
@@ -687,15 +702,19 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton22))
                     .addGroup(ManageFarmerLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
+                        .addContainerGap()
+                        .addComponent(jButton9)
+                        .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(3483, Short.MAX_VALUE))
+                .addContainerGap(3455, Short.MAX_VALUE))
         );
         ManageFarmerLayout.setVerticalGroup(
             ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageFarmerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9))
                 .addGap(18, 18, 18)
                 .addGroup(ManageFarmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21)
@@ -1730,20 +1749,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        sortController.sortByName();        // TODO add your handling code here:
+        sortSearchController.sortByName();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        sortController.sortByPrice();        // TODO add your handling code here:
+        sortSearchController.sortByPrice();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        sortController.search(txtSearch.getText());        // TODO add your handling code here:
+        sortSearchController.linearSearch(txtSearch.getText());        // TODO add your handling code here:
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void cmbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoryActionPerformed
         String category = cmbCategory.getSelectedItem().toString();
-    sortController.filterByCategory(category);       // TODO add your handling code here:
+    sortSearchController.filterByCategory(category);       // TODO add your handling code here:
     }//GEN-LAST:event_cmbCategoryActionPerformed
 
     private void txtSearchTechniqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchTechniqueActionPerformed
@@ -1967,65 +1986,78 @@ public class Main extends javax.swing.JFrame {
     }        // TODO add your handling code here:
     }//GEN-LAST:event_PriceFocusGained
 
-    private void deleteSelectedProduct() {
-    // 1. Get the table model
-    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) addProductTable.getModel();
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    // 1. Get the current list from the controller
+    LinkedList<Farmer> farmerList = FarmerController.getAllFarmers();
     
-    // 2. Get the selected row index
-    int selectedRow = addProductTable.getSelectedRow();
+    // 2. Apply Insertion Sort
+    Controller.SortAndSearch.insertionSortFarmers(farmerList);
     
-    // 3. Check if a row is actually selected
-    if (selectedRow != -1) {
-        // Optional: Add a confirmation dialog
-        int response = JOptionPane.showConfirmDialog(this, 
+    // 3. Refresh the JTable (jTable1 or farmerTable)
+    DefaultTableModel model = (DefaultTableModel) farmerTable.getModel();
+    model.setRowCount(0); // Clear current rows
+    
+    for (Farmer f : farmerList) {
+        model.addRow(new Object[]{
+            f.getId(),
+            f.getName(),
+            f.getPhone(),
+            f.getAddress(),
+            f.getStatus()
+        });
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    /**
+     * deletes selected product from the new added table in manage product panel.
+     */
+    private void deleteSelectedProduct() 
+    {
+        // 1. Get the table model
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) addProductTable.getModel();
+    
+        // 2. Get the selected row index
+        int selectedRow = addProductTable.getSelectedRow();
+    
+        // 3. Check if a row is actually selected
+        if (selectedRow != -1) 
+        {
+            // Optional: Add a confirmation dialog
+            int response = JOptionPane.showConfirmDialog(this, 
                 "Are you sure you want to delete this product?", 
                 "Confirm Deletion", 
                 JOptionPane.YES_NO_OPTION);
         
-        if (response == JOptionPane.YES_OPTION) {
-            // Remove the row from the model
-            model.removeRow(selectedRow);
-            JOptionPane.showMessageDialog(this, "Product deleted successfully.");
-        }
-    } else {
-        // If no row is selected, warn the user
-        JOptionPane.showMessageDialog(this, 
+            if (response == JOptionPane.YES_OPTION) 
+            {
+                // Remove the row from the model
+                model.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Product deleted successfully.");
+            }
+        } 
+        else 
+        {
+            // If no row is selected, warn the user
+            JOptionPane.showMessageDialog(this, 
                 "Please select a row from the table to delete.", 
                 "No Row Selected", 
                 JOptionPane.WARNING_MESSAGE);
-    }
-}    
+        }
+    }    
     
-    private void saveProductToTable() {
-    // 1. Validate Inputs
-    if (ValidationController.isEmpty(ProductName, "Product Name")) return;
-    if (!ValidationController.isNumeric(Price, "Price")) return;
+    /**
+     * used clear the three fields of add product section.
+     */
+    private void clearProductFields() 
+    {
+        ProductName.setText("");
+        Price.setText("");
+        comboCategory.setSelectedIndex(0);
+    }
 
-    // 2. Get Data
-    String name = ProductName.getText().trim();
-    String category = comboCategory.getSelectedItem().toString();
-    String priceVal = Price.getText().trim();
-
-    // 3. Add to Table
-    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) addProductTable.getModel();
-    model.addRow(new Object[]{
-        name, 
-        category,  
-        Long.parseLong(priceVal),
-    });
-
-    // 4. Success and Clear
-    JOptionPane.showMessageDialog(this, "Product Saved Successfully!");
-    clearProductFields();
-}
-
-private void clearProductFields() 
-{
-    ProductName.setText("");
-    Price.setText("");
-    comboCategory.setSelectedIndex(0);
-}
-
+    /**
+     * used to update the price display section in cart.
+     */
     private void updateTotals() 
     {
         subTotal.setText("Subtotal: Rs " + cartController.getTotalWithoutVAT());
@@ -2033,6 +2065,12 @@ private void clearProductFields()
         total.setText("Total Payable: Rs " + cartController.getTotalPrice());
     }
     
+    /**
+    * Retrieves all JPanel components from the product display panel.
+    * Iterates through the components in the productPanel and returns a list of those 
+    * that are instances of JPanel, representing individual product cards.
+    * @return An ArrayList containing the JPanel components found in the productPanel.
+    */
     private ArrayList<JPanel> getProductCards() 
     {
         ArrayList<JPanel> cards = new ArrayList<>();
@@ -2047,6 +2085,10 @@ private void clearProductFields()
         return cards;
     }
     
+    /**
+    * Loads the current list of active farmers from the data source into the UI.
+    * Populates the farmerTable with active farmer records upon initialization.
+    */
     private void loadFarmers() 
     {
         DefaultTableModel model = (DefaultTableModel) farmerTable.getModel();
@@ -2061,6 +2103,10 @@ private void clearProductFields()
         }
     }
     
+    /**
+    * Loads the list of deleted or archived farmers into the historical records table.
+    * Populates the deletedFarmerTable with historical data for administrative review.
+    */
     public void loadDeletedFarmers() 
     {
 
@@ -2080,21 +2126,31 @@ private void clearProductFields()
         }
     }
     
-private void refreshProductDisplay() { // Remove the parameter from here
-        
-    // Set a consistent layout for dynamic cards
-    productPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
+    /**
+    * Refreshes the product display area to reflect the current state of the product list.
+    * Clears existing components and re-populates the productPanel with updated product cards.
+    */
+    private void refreshProductDisplay() 
+    {
+        // Set a consistent layout for dynamic cards
+        productPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
 
-    // Use the class-level 'allProducts' list directly
-    for (Product p : allProducts) {
-        JPanel card = createProductCard(p);
-        productPanel.add(card);
+        // Use the class-level 'allProducts' list directly
+        for (Product p : allProducts) 
+        {
+            JPanel card = createProductCard(p);
+            productPanel.add(card);
+        }
+
+        productPanel.revalidate();
+        productPanel.repaint();
     }
-
-    productPanel.revalidate();
-    productPanel.repaint();
-}
     
+    /**
+    * Creates a graphical card representation for a Product.
+    * @param p The product object containing data to display.
+    * @return A JPanel configured as a product display card.
+    */
     private JPanel createProductCard(Product p) 
     {
         JPanel card = new JPanel();
@@ -2213,6 +2269,7 @@ private void refreshProductDisplay() { // Remove the parameter from here
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
