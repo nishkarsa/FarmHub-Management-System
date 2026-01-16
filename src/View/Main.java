@@ -1644,7 +1644,7 @@ public class Main extends javax.swing.JFrame {
         // Update the Admin's Table (Now with only 3 columns)
         DefaultTableModel model = (DefaultTableModel) addProductTable.getModel();
         
-        // Pass exactly 3 values to match your new table design
+        // Pass exactly 3 values to match product table design
         model.addRow(new Object[]{
             name,        // Index 0
             category,    // Index 1

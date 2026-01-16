@@ -94,5 +94,5 @@ public class FarmerController
         
         // Add it to the list
         farmers.add(newFarmer);
-}
+    }
 }

@@ -289,12 +289,15 @@ public class SortAndSearch
      * Performs a Linear Search on the product list.
      * @param keyword The string to search for.
      */
-    public void linearSearch(String keyword) {
+    public void linearSearch(String keyword) 
+    {
         ArrayList<JPanel> filtered = new ArrayList<>();
         String searchKey = keyword.toLowerCase();
 
-        for (JPanel p : allProducts) {
-            if (p.getName() != null && p.getName().toLowerCase().contains(searchKey)) {
+        for (JPanel p : allProducts) 
+        {
+            if (p.getName() != null && p.getName().toLowerCase().contains(searchKey)) 
+            {
                 filtered.add(p);
             }
         }
